@@ -29,6 +29,4 @@ tasks:
     desc: Create production build
     cmds:
       - task: clone
-      - itkdev-docker-compose up -d
-      - itkdev-docker-compose composer install -no-dev -o --classmap-authoritative
-      - itkdev-docker-compose down
+      - docker compose run --rm phpfpm composer install -no-dev -o --classmap-authoritative

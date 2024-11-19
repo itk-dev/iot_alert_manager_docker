@@ -19,6 +19,8 @@ steps:
       user:
         from_secret: user
       playbook: 'release'
+      pre_up:
+        - itkdev-docker-compose-server run --rm phpfpm bin/console cache:clear
       cron:
         cron:
           minute: '0'

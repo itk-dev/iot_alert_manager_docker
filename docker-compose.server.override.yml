@@ -15,3 +15,4 @@ services:
   phpfpm:
     volumes:
       - ./iot_alert_manager:/app
+      - ../../shared/.env.local:/app/.env.local

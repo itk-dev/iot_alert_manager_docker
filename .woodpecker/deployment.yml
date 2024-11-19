@@ -1,0 +1,29 @@
+when:
+  - event: release
+
+skip_clone: true
+
+steps:
+  - name: Ansible playbook
+    image: itkdev/ansible-plugin:1
+    pull: true
+    settings:
+      id:
+        from_secret: id
+      secret:
+        from_secret: secret
+      host:
+        from_secret: host
+      path:
+        from_secret: path
+      user:
+        from_secret: user
+      playbook: 'release'
+      cron:
+        cron:
+          minute: '0'
+          hour: '7'
+          day: '*'
+          month: '*'
+          weekday: '*'
+          job: 'itkdev-docker-compose-server exec phpfpm bin/console app:alert:checks --all --no-sms --filter-status --override-mail=iotlab@aarhus.dk --override-phone=004530272742'

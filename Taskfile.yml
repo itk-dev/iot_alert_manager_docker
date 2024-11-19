@@ -29,7 +29,6 @@ tasks:
     desc: Create production build
     cmds:
       - task: clone
-      - export APP_ENV=prod
       - docker network create frontend
-      - docker compose run --rm --user root phpfpm composer install --no-dev -o --classmap-authoritative
+      - APP_ENV=prod docker compose run --rm --user root phpfpm composer install --no-dev -o --classmap-authoritative
       - sudo chown -R runner:runner {{ .TARGET_DIR }}

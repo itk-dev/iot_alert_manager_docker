@@ -1,0 +1,34 @@
+version: '3'
+
+dotenv: [".task.env"]
+
+vars:
+  APP_TAG: '1.0.4'
+  APP_REPOS: 'https://github.com/itk-dev/iot_alert_manager'
+  TARGET_DIR: './iot_alert_manager'
+
+tasks:
+  clone:
+    desc: Clone manager repository.
+    cmds:
+      - git clone {{ .APP_REPOS }} {{ .TARGET_DIR }}
+      - cd {{.TARGET_DIR}} && git checkout {{ .APP_TAG }}
+
+  dev:clone:
+    desc: Clone manager repository.
+    cmds:
+      - task: clone
+
+  dev:install:
+    desc: Setup manager
+    cmds:
+      - itkdev-docker-compose up -d
+      - itkdev-docker-compose composer install
+
+  prod:build:
+    desc: Create production build
+    cmds:
+      - task: clone
+      - itkdev-docker-compose up -d
+      - itkdev-docker-compose composer install -no-dev -o --classmap-authoritative
+      - itkdev-docker-compose down

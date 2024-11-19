@@ -30,4 +30,5 @@ tasks:
     cmds:
       - task: clone
       - docker network create frontend
-      - docker compose run --rm phpfpm composer install --no-dev -o --classmap-authoritative
+      - docker compose run --rm --user root phpfpm composer install --no-dev -o --classmap-authoritative
+      - sudo chown -R runner:runner {{ .TARGET_DIR }}

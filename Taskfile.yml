@@ -30,5 +30,4 @@ tasks:
     cmds:
       - task: clone
       - docker network create frontend
-      - APP_ENV=prod docker compose run --rm --user root phpfpm composer install --no-dev -o --classmap-authoritative
-      - sudo chown -R runner:runner {{ .TARGET_DIR }}
+      - docker compose run -e APP_ENV=prod --rm --user root phpfpm composer install --no-dev -o --classmap-authoritative

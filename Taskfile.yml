@@ -29,4 +29,5 @@ tasks:
     desc: Create production build
     cmds:
       - task: clone
+      - docker network create frontend
       - docker compose run --rm phpfpm composer install -no-dev -o --classmap-authoritative

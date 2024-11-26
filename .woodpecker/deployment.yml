@@ -28,4 +28,4 @@ steps:
           day: '*'
           month: '*'
           weekday: '*'
-          job: 'itkdev-docker-compose-server exec phpfpm bin/console app:alert:checks --all --no-sms --filter-status --override-mail=iotlab@aarhus.dk --override-phone=004530272742'
+          job: 'itkdev-docker-compose-server exec phpfpm bin/console app:alert:checks --all --no-sms --filter-status --override-phone=004530272742'

@@ -3,7 +3,7 @@ version: '3'
 dotenv: [".task.env"]
 
 vars:
-  APP_TAG: '1.0.4'
+  APP_TAG: '1.0.5'
   APP_REPOS: 'https://github.com/itk-dev/iot_alert_manager'
   TARGET_DIR: './iot_alert_manager'
 

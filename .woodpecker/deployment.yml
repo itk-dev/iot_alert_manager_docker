@@ -24,7 +24,7 @@ steps:
       cron:
         cron:
           minute: '0'
-          hour: '7'
+          hour: '4'
           day: '*'
           month: '*'
           weekday: '*'
